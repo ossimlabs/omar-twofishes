@@ -1,10 +1,11 @@
 buildscript {
   ext {
     baseImage = "rhel-minimal"
+    dockerFile=project.file("docker/Dockerfile")    
     // must be a closure.  If set to =false then it thinks the proeprty does not exist
     hasJar={false}
     dockerStatementsOverride = { [
-      "FROM ${lazyProperty('dockerNamespaceUrl')}${lazyProperty('baseImage')}:${lazyProperty('dockerAppTag')}",
+      "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
       "MAINTAINER RadiantBlue Technologies radiantblue.com",
       """
       LABEL com.radiantblue.version="0.1"\
