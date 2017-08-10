@@ -18,11 +18,10 @@ buildscript {
             com.radiantblue.classification="UNCLASSIFIED"
       """,
       """
-      RUN useradd -u 1001 -r -g 0 -d \$HOME -s /sbin/nologin -c 'Default Application User' omar && \
-          mkdir /usr/share/omar && \
+      RUN mkdir /home/omar && \
           yum -y install java-1.8.0-openjdk-devel && \
           yum -y install wget && yum -y install unzip && \
-          cd  /usr/share/omar && \
+          cd  /home/omar && \
           wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \
           wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/2015-03-05.zip && \
           unzip 2015-03-05.zip && rm 2015-03-05.zip
@@ -31,8 +30,8 @@ buildscript {
       "ENV LANGUAGE en_US:en",
       "ENV LC_ALL en_US.UTF-8",
       "USER 1001",
-      "WORKDIR /usr/share/omar",
-      "CMD java -server -Xmx256m -Xmx4096m -jar /usr/share/omar/server-assembly-0.84.9.jar --port 8080 --hfile_basepath /usr/share/omar/2015-03-05-20-05-30.753698",
+      "WORKDIR /home/omar",
+      "CMD java -server -Xmx256m -Xmx4096m -jar /home/omar/server-assembly-0.84.9.jar --port 8080 --hfile_basepath /home/omar/2015-03-05-20-05-30.753698",
       "EXPOSE 8080 8081 8082 8083"
     ] }
   }
