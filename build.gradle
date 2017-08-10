@@ -18,8 +18,7 @@ buildscript {
             com.radiantblue.classification="UNCLASSIFIED"
       """,
       """
-      RUN mkdir /home/omar && \
-          yum -y install java-1.8.0-openjdk-devel && \
+      RUN yum -y install java-1.8.0-openjdk-devel && \
           yum -y install wget && yum -y install unzip && \
           cd  /home/omar && \
           wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \
