@@ -7,11 +7,11 @@ buildscript {
     dockerStatementsOverride = { [
       "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
 	  "USER root",
-      """RUN yum -y install java-1.8.0-openjdk-devel && \
-    yum -y install wget && yum -y install unzip && \
-    cd /home/omar && \
-    wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \
-    wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/2015-03-05.zip && \
+      """RUN yum -y install java-1.8.0-openjdk-devel && \\
+    yum -y install wget && yum -y install unzip && \\
+    cd /home/omar && \\
+    wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \\
+    wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/2015-03-05.zip && \\
     unzip 2015-03-05.zip && rm 2015-03-05.zip""",
       "ENV LANG en_US.UTF-8",
       "ENV LANGUAGE en_US:en",
