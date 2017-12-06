@@ -1,0 +1,117 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: omar-twofishes
+  namespace: omar-dev
+  selfLink: /oapi/v1/namespaces/omar-dev/deploymentconfigs/omar-twofishes
+  uid: dce9ced4-82c2-11e7-ba3b-0e704fd9c8b2
+  resourceVersion: '8864899'
+  generation: 79
+  creationTimestamp: '2017-08-16T20:38:29Z'
+  labels:
+    app: omar-openshift
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - omar-twofishes
+        from:
+          kind: ImageStreamTag
+          namespace: o2
+          name: 'omar-twofishes:latest'
+        lastTriggeredImage: >-
+          172.30.181.173:5000/o2/omar-twofishes@sha256:7916b2721625067379d62d45a92d521de7e65733ab741f0cb9aee3a80558bcec
+  replicas: 1
+  test: false
+  selector:
+    app: omar-openshift
+    deploymentconfig: omar-twofishes
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: omar-openshift
+        deploymentconfig: omar-twofishes
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+    spec:
+      containers:
+        - name: omar-twofishes
+          image: >-
+            172.30.181.173:5000/o2/omar-twofishes@sha256:7916b2721625067379d62d45a92d521de7e65733ab741f0cb9aee3a80558bcec
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
+            - containerPort: 8082
+              protocol: TCP
+            - containerPort: 8083
+              protocol: TCP
+          resources: {}
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+status:
+  latestVersion: 75
+  observedGeneration: 79
+  replicas: 1
+  updatedReplicas: 1
+  availableReplicas: 1
+  unavailableReplicas: 0
+  details:
+    message: image change
+    causes:
+      - type: ImageChange
+        imageTrigger:
+          from:
+            kind: ImageStreamTag
+            namespace: o2
+            name: 'omar-twofishes:latest'
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2017-10-31T18:15:52Z'
+      lastTransitionTime: '2017-10-31T18:15:52Z'
+      message: Deployment config has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2017-11-30T12:40:32Z'
+      lastTransitionTime: '2017-11-30T12:40:29Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "omar-twofishes-75" successfully rolled out
+  readyReplicas: 1
