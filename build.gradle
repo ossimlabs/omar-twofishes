@@ -13,15 +13,18 @@ buildscript {
       "ADD server-assembly-0.84.9.jar /home/omar/",
       "ADD 2015-03-05.zip /home/omar/",
       """RUN yum -y install java-1.8.0-openjdk-devel && \\
-    yum -y install wget && yum -y install unzip && \\
+    yum -y install nss_wrapper gettext wget && yum -y install unzip && \\
     cd /home/omar && \\
-    unzip 2015-03-05.zip && rm 2015-03-05.zip""",
+    unzip 2015-03-05.zip && rm 2015-03-05.zip && \
+    chown 1001:0 -R /home/omar && chmod 777 `find /home/omar -type d` && \
+    chmod 666 `find /home/omar -type f`
+    """,
       "ENV LANG en_US.UTF-8",
       "ENV LANGUAGE en_US:en",
       "ENV LC_ALL en_US.UTF-8",
       "USER 1001",
       "WORKDIR /home/omar",
-      "CMD java -server -Xmx256m -Xmx4096m -jar /home/omar/server-assembly-0.84.9.jar --port 8080 --hfile_basepath /home/omar/2015-03-05-20-05-30.753698",
+      "CMD /home/omar/run.sh",
       "EXPOSE 8080 8081 8082 8083"
     ] }
     if ( System.env.OMAR_COMMON_PROPERTIES )
