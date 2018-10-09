@@ -93,4 +93,4 @@ fi
 export JAR_FILE=`find ${HOME} -name "*.jar"`
 
 echo "java ${JAVA_OPTS} -jar ${JAR_FILE} --port 8080 --hfile_basepath /home/omar/2015-03-05-20-05-30.753698"
-java ${JAVA_OPTS} -jar ${JAR_FILE} --port 8080 --hfile_basepath /home/omar/2015-03-05-20-05-30.753698"
+java ${JAVA_OPTS} -jar ${JAR_FILE} --port 8080 --hfile_basepath /home/omar/2015-03-05-20-05-30.753698
