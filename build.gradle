@@ -12,6 +12,7 @@ buildscript {
       "ADD ./yum.repos.d/* /etc/yum.repos.d/",
       "ADD server-assembly-0.84.9.jar /home/omar/",
       "ADD 2015-03-05.zip /home/omar/",
+      "ADD run.sh /home/omar/",
       """RUN yum -y install java-1.8.0-openjdk-devel && \\
     yum -y install nss_wrapper gettext wget && yum -y install unzip && \\
     cd /home/omar && \\
