@@ -18,7 +18,7 @@ buildscript {
     cd /home/omar && \\
     unzip 2015-03-05.zip && rm 2015-03-05.zip && \
     chown 1001:0 -R /home/omar && chmod 777 `find /home/omar -type d` && \
-    chmod 666 `find /home/omar -type f`
+    chmod 666 `find /home/omar -type f` && chmod 777 /home/omar/run.sh
     """,
       "ENV LANG en_US.UTF-8",
       "ENV LANGUAGE en_US:en",
