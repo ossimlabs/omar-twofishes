@@ -3,7 +3,7 @@
 # be found at their location. Twofishes
 # location service is used by the OMAR/O2 UI
 #FROM REGISTRY_URI/o2-base:TAG_PLACEHOLDER
-FROM centos:latest
+FROM centos:centos7
 MAINTAINER RadiantBlue Technologies radiantblue.com
 LABEL com.radiantblue.version="0.1"\
       com.radiantblue.description="Twofishes is\
