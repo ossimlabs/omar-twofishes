@@ -20,7 +20,8 @@ RUN useradd -u 1001 -r -g 0 -d $HOME -s /sbin/nologin -c 'Default Application Us
     cd  /usr/share/omar && \
     wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \
     wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/2015-03-05.zip && \
-    unzip 2015-03-05.zip && rm 2015-03-05.zip
+    unzip 2015-03-05.zip && rm 2015-03-05.zip && \
+    yum -y update
 
 # We need to do this because twofishes crashes without it:
 # http://jaredmarkell.com/docker-and-locales/
