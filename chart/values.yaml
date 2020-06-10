@@ -1,0 +1,53 @@
+# Default values for omar-twofishes.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicas: 1
+
+appName: omar-twofishes
+
+global:
+  dockerRepository: nexus-docker-private-group.ossim.io
+  imagePullSecret:
+    registry: null
+    username: null
+    password: null
+  hostname: omar-dev.ossim.io
+
+  createIngress: true
+  useTls: false
+  useTLSClientAuth: false
+  sslCertSecretName: null
+  authSslCertSecretName: null
+
+  createImagePullSecret: true
+  useImagePullSecret: true
+
+# These variables can be overridden because of the use of the 'pluck' function:
+# - createIngress
+# - useTls
+# - useTlsClientAuth
+# - createImagePullSecret
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 2000Mi
+  requests:
+    cpu: 50m
+    memory: 1500Mi
+    
+image:
+  name: omar-twofishes
+  tag: dev
+  pullPolicy: Always
+
+ingressPath: /omar-twofishes
+ingressRewriteTarget: /$1
+internalPort: 8080
+externalPort: 8080
+
+terminationGracePeriodSeconds: 30
+
+envVars:
+  JAVA_OPTS: "-server -Xms256m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XX:+CMSClassUnloadingEnabled -XX:+UseGCOverheadLimit -Djava.awt.headless=true -XshowSettings:vm -Djava.security.egd=file:/dev/./urandom"

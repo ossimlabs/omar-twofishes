@@ -1,0 +1,37 @@
+{{- define "omar-twofishes.imagePullSecret" }}
+{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.global.imagePullSecret.registry (printf "%s:%s" .Values.global.imagePullSecret.username .Values.global.imagePullSecret.password | b64enc) | b64enc }}
+{{- end }}
+
+{{/* Template for env vars */}}
+{{- define "omar-twofishes.envVars" -}}
+  {{- range $key, $value := .Values.envVars }}
+  - name: {{ $key | quote }}
+    value: {{ $value | quote }}
+  {{- end }}
+{{- end -}}
+
+{{- define "omar-twofishes.volumeMounts.configmaps" -}}
+{{- range $configmap := .Values.configmaps}}
+- name: {{ $configmap.internalName | quote }}
+  mountPath: {{ $configmap.mountPath | quote }}
+  {{- if $configmap.subPath }}
+  subPath: {{ $configmap.subPath | quote }}
+  {{- end }}
+{{- end -}}
+{{- end -}}
+
+{{- define "omar-twofishes.volumeMounts" -}}
+{{- include "omar-twofishes.volumeMounts.configmaps" . -}}
+{{- end -}}
+
+{{- define "omar-twofishes.volumes.configmaps" -}}
+{{- range $configmap := .Values.configmaps}}
+- name: {{ $configmap.internalName | quote }}
+  configMap:
+    name: {{ $configmap.name | quote }}
+{{- end -}}
+{{- end -}}
+
+{{- define "omar-twofishes.volumes" -}}
+{{- include "omar-twofishes.volumes.configmaps" . -}}
+{{- end -}}

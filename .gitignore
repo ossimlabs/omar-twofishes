@@ -1,2 +1,7 @@
 build
 .gradle
+.project
+.settings
+packaged-chart
+*.lock
+charts/*.tgz
