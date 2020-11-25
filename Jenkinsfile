@@ -101,6 +101,20 @@ podTemplate(
       DOCKER_IMAGE_PATH = "${DOCKER_REGISTRY_PRIVATE_UPLOAD_URL}/omar-twofishes"
     }
 
+    stage('SonarQube Analysis') {
+                nodejs(nodeJSInstallationName: "${NODEJS_VERSION}") {
+                    def scannerHome = tool "${SONARQUBE_SCANNER_VERSION}"
+
+                    withSonarQubeEnv('sonarqube'){
+                        sh """
+                            ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=omar-twofishes \
+                            -Dsonar.login=${SONARQUBE_TOKEN}
+                        """
+                    }
+                }
+            }
+
     stage('Package chart'){
       container('helm') {
         sh """
