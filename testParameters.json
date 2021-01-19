@@ -1,0 +1,53 @@
+{
+  "info": {
+    "title": "Test Parameters",
+    "format": {
+      "name": {
+        "method": ["get", "post", "delete", "etc..."],
+        "endpoint": "/controller/endpoint",
+        "in": ["query", "body"],
+        "expected": ["good", "bad"],
+        "parameters": [{"parameterName1": "value1", "parameterName2": "value2"}, { "body": {} }]
+      }
+    }
+  },
+  "tests": {
+    "minTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "good",
+      "parameters": {
+        "autocompleteBias": "BALANCED",
+        "maxInterpretations": "1",
+        "query": "paris, france",
+        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
+      }
+    },
+    "maxTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "good",
+      "parameters": {
+        "autocompleteBias": "BALANCED",
+        "maxInterpretations": "10",
+        "query": "par",
+        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED",
+        "autocomplete": "true"
+      }
+    },
+    "badTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "bad",
+      "parameters": {
+        "autocompleteBias": "BALANCED",
+        "maxInterpretations": "-5",
+        "query": "par",
+        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
+      }
+    }
+  }
+}
