@@ -13,7 +13,7 @@ buildscript {
       "ADD server-assembly-0.84.9.jar /home/omar/",
       "ADD 2015-03-05.zip /home/omar/",
       "ADD run.sh /home/omar/",
-      """RUN yum -y install java-1.8.0-openjdk-devel && \\
+      """RUN yum -y install java-11-openjdk-devel && \\
     yum -y install nss_wrapper gettext wget && yum -y install unzip && \\
     cd /home/omar && \\
     unzip 2015-03-05.zip && rm 2015-03-05.zip && \
@@ -37,15 +37,15 @@ buildscript {
       maven { url "${ossimMavenProxy}" }
     }
     dependencies {
-          classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginV}"
+          //classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginV}"
           classpath 'com.github.skhatri:gradle-s3-plugin:1.0.4'
           classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5"
     }
 }
 
 plugins {
-    id "com.github.ben-manes.versions" version "0.17.0"
-    id "org.sonarqube" version "2.6.2"
+    id "com.github.ben-manes.versions" version "0.36.0"
+    id "org.sonarqube" version "3.1"
 }
 
 apply plugin: "maven-publish"

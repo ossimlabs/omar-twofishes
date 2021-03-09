@@ -15,7 +15,7 @@ LABEL com.radiantblue.version="0.1"\
       com.radiantblue.classification="UNCLASSIFIED"
 RUN useradd -u 1001 -r -g 0 -d $HOME -s /sbin/nologin -c 'Default Application User' omar && \
     mkdir /usr/share/omar && \
-    yum -y install java-1.8.0-openjdk-devel && \
+    yum -y install java-11-openjdk-devel && \
     yum -y install wget && yum -y install unzip && \
     cd  /usr/share/omar && \
     wget https://s3.amazonaws.com/ossimlabs/dependencies/twofishes/server-assembly-0.84.9.jar && \
