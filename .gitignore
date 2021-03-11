@@ -5,3 +5,12 @@ build
 packaged-chart
 *.lock
 charts/*.tgz
+.idea
+node_modules
+package.json
+package-lock.json
+cypress/plugins
+cypress/screenshots
+cypress/support
+cypress/fixtures
+results
