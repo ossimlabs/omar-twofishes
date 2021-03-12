@@ -45,7 +45,7 @@ image:
 ingressPath: /omar-twofishes
 ingressRewriteTarget: /$1
 internalPort: 8081
-externalPort: 8080
+externalPort: 8081
 
 terminationGracePeriodSeconds: 30
 
