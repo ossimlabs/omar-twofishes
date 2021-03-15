@@ -12,5 +12,4 @@ package-lock.json
 cypress/plugins
 cypress/screenshots
 cypress/support
-cypress/fixtures
 results

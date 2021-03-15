@@ -1,0 +1,52 @@
+{
+  "info": {
+    "title": "Test Parameters",
+    "format": {
+      "name": {
+        "method": ["get", "post", "delete", "etc..."],
+        "endpoint": "/controller/endpoint",
+        "in": ["query", "body"],
+        "expected": ["good", "bad"],
+        "parameters": [{"parameterName1": "value1", "parameterName2": "value2"}, { "body": {} }]
+      }
+    }
+  },
+  "tests": {
+    "minTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "good",
+      "parameters": {
+        "query": "paris, france"
+      }
+    },
+    "maxTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "good",
+      "parameters": {
+        "autocomplete": "true",
+        "autocompleteBias": "BALANCED",
+        "cc": "US",
+        "debug": "1",
+        "lang": "en",
+        "maxInterpretations": "2",
+        "query": "par",
+        "strict": "true",
+        "woeHint": "7%2C10",
+        "woeRestrict": "7%2C10",
+        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
+      }
+    },
+    "badTwofishes": {
+      "method": "get",
+      "endpoint": "",
+      "in": "query",
+      "expected": "bad",
+      "parameters": {
+      }
+    }
+  }
+}
