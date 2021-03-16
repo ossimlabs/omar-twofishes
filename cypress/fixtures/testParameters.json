@@ -18,10 +18,7 @@
       "in": "query",
       "expected": "good",
       "parameters": {
-        "autocompleteBias": "BALANCED",
-        "maxInterpretations": "1",
-        "query": "paris, france",
-        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
+        "query": "paris, france"
       }
     },
     "maxTwofishes": {
@@ -30,19 +27,17 @@
       "in": "query",
       "expected": "good",
       "parameters": {
-        "autocompleteBias": "BALANCED",
-        "maxInterpretations": "10",
-        "query": "par",
-        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED",
         "autocomplete": "true",
+        "autocompleteBias": "BALANCED",
         "cc": "US",
         "debug": "1",
         "lang": "en",
-        "ll": "40.74,-74.0",
-        "radius": "0",
-        "strict": "false",
-        "woeHint": "7,10",
-        "woeRestrict": "7,10"
+        "maxInterpretations": "2",
+        "query": "par",
+        "strict": "true",
+        "woeHint": "7%2C10",
+        "woeRestrict": "7%2C10",
+        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
       }
     },
     "badTwofishes": {
@@ -51,10 +46,6 @@
       "in": "query",
       "expected": "bad",
       "parameters": {
-        "autocompleteBias": "BALANCED",
-        "maxInterpretations": "-5",
-        "query": "par",
-        "responseIncludes": "WKT_GEOMETRY_SIMPLIFIED"
       }
     }
   }

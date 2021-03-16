@@ -25,33 +25,27 @@ spec:
         {{- include "omar-twofishes.envVars" . | nindent 8 }}
         image: "{{ .Values.global.dockerRepository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        livenessProbe:
-          failureThreshold: 5
-          initialDelaySeconds: 30
-          periodSeconds: 15
-          successThreshold: 1
-          httpGet:
-            path: /health
-            port: 8082
-            scheme: HTTP
-          timeoutSeconds: 3
-        readinessProbe:
-          failureThreshold: 15
-          initialDelaySeconds: 30
-          periodSeconds: 15
-          successThreshold: 1
-          timeoutSeconds: 3
-          httpGet:
-            port: 8082
-            path: /
+#        livenessProbe:
+#          failureThreshold: 5
+#          initialDelaySeconds: 30
+#          periodSeconds: 15
+#          successThreshold: 1
+#          httpGet:
+#            path: /health
+#            port: 8080
+#            scheme: HTTP
+#          timeoutSeconds: 3
+#        readinessProbe:
+#          failureThreshold: 15
+#          initialDelaySeconds: 30
+#          periodSeconds: 15
+#          successThreshold: 1
+#          timeoutSeconds: 3
+#          httpGet:
+#            port: 8080
+#            path: /
         ports:
         - containerPort: {{ .Values.internalPort }}
-          protocol: TCP
-        - containerPort: 8081
-          protocol: TCP
-        - containerPort: 8082
-          protocol: TCP
-        - containerPort: 8083
           protocol: TCP
         resources:
           limits:

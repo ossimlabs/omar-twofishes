@@ -33,6 +33,6 @@ ENV LC_ALL en_US.UTF-8
 USER 1001
 WORKDIR /usr/share/omar
 
-CMD java -server -Xmx256m -Xmx4096m -jar /usr/share/omar/server-assembly-0.84.9.jar --port 8080 --hfile_basepath /usr/share/omar/2015-03-05-20-05-30.753698
+CMD java -server -Xmx256m -Xmx4096m -jar /usr/share/omar/server-assembly-0.84.9.jar --port 8081 --hfile_basepath /usr/share/omar/2015-03-05-20-05-30.753698
 
 EXPOSE 8080 8081 8082 8083

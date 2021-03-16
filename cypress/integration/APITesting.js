@@ -1,4 +1,4 @@
-let json = require('../../testParameters.json');
+let json = require('../fixtures/testParameters.json');
 let tests = Object.keys(json.tests);
 let innerJson, method, endpoint, inValue, good, parameters, request, keys;
 
@@ -28,6 +28,9 @@ describe('Automated tests for the omar-twofishes API endpoints', () => {
                         request = request + parameter + "=" + innerJson.parameters[parameter] + "&";
                     })
                     request = request.substring(0, request.length - 1);
+                    if(request == "") {
+                        request = "?"
+                    }
                     cy.request({method: method, url: endpoint + request, failOnStatusCode: false})
                         .then((response) => {
                             expect(response.status).to.not.eq(200)

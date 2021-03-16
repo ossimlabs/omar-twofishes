@@ -7,10 +7,10 @@ spec:
   selector:
     app: {{ .Values.appName }}
   ports:
-  - name: {{ .Values.internalPort }}-tcp
-    port: {{ .Values.externalPort }}
+  - name: 8080-tcp
+    port: 8080
     protocol: TCP
-    targetPort: {{ .Values.internalPort }}
+    targetPort: 8080
   - name: 8081-tcp
     port: 8081
     protocol: TCP
